@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "757552680428",
+    "project_id": "push-noti-164f4",
+    "storage_bucket": "push-noti-164f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757552680428:android:51915e4f4098e2db4f44c9",
+        "android_client_info": {
+          "package_name": "com.companyname.pushnotimaui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpFbbBHhOt7J_2f4tRrSEeXQUzvdNzRIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
