@@ -37,7 +37,7 @@
 **Steps**
 1. Add ASP.Net Maui project
 2. Install necessary libraries.
-3. Create new application (Android) and download the license (google-services.json) file from Firebase.
+3. Create new application (Android) and download the license (google-services.json) file from Firebase. Place it under Platforms > Android.
 4. Add a service extends `FirebaseMessagingService` and override `OnNewToken()`, `OnMessageReceived()`. Export this module (?)
 5. Create notificaiton channels in Android > `MainActivity.cs`.
 6. Add logic to a page (MainPage) to trigger Api server.
