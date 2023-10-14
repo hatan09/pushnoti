@@ -30,11 +30,11 @@
                 Text="Welcome to .NET Multi-platform App UI" />
 
             <Button
-                x:Name="CounterBtn"
+                x:Name="PushNotiBtn"
                 Clicked="OnPushNoti"
                 HorizontalOptions="Center"
-                SemanticProperties.Hint="Click to Send Notification"
-                Text="Click me" />
+                SemanticProperties.Hint="Push Notification"
+                Text="Push Notification" />
 
         </VerticalStackLayout>
     </ScrollView>

@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using AndroidX.Core.App;
 using Firebase.Messaging;
 
@@ -16,10 +15,11 @@ namespace PushNotiMaui.Platforms.Android.Services
         }
         #endregion
 
-        #region [ Methods - Noti ]
+        #region [ Methods - Override ]
         public override void OnNewToken(string token)
         {
             base.OnNewToken(token);
+
             if (Preferences.ContainsKey("DeviceToken"))
             {
                 Preferences.Remove("DeviceToken");
@@ -32,26 +32,25 @@ namespace PushNotiMaui.Platforms.Android.Services
             base.OnMessageReceived(message);
 
             var notification = message.GetNotification();
-
-            PushNotification(notification.Body, notification.Title, message.Data);
+            if (notification != null)
+            {
+                OnPushNotification(notification.Title, notification.Body, message.Data);
+            }
         }
+        #endregion
 
-        private void PushNotification(string messageBody, string title, IDictionary<string, string> data)
+        #region [ Methods - Notification ]
+        private void OnPushNotification(string title, string body, IDictionary<string, string> data)
         {
-            var intent = new Intent(this, typeof(MainActivity));
-            intent.AddFlags(ActivityFlags.ClearTop);
-            intent.AddFlags(ActivityFlags.SingleTop);
-
-            var notificationBuilder = new NotificationCompat.Builder(this, MainActivity.Channel_ID)
+            var builder = new NotificationCompat.Builder(this, MainActivity.CHANNEL_ID)
                 .SetContentTitle(title)
-                .SetSmallIcon(Resource.Drawable.navigation_empty_icon)
-                .SetContentText(messageBody)
-                .SetChannelId(MainActivity.Channel_ID)
-                .SetAutoCancel(true)
-                .SetPriority((int)NotificationPriority.Max);
+                .SetContentText(body)
+                .SetSmallIcon(Resource.Drawable.notification_template_icon_bg)
+                .SetChannelId(MainActivity.CHANNEL_ID)
+                .SetPriority(2);
 
             var notificationManager = NotificationManagerCompat.From(this);
-            notificationManager.Notify(MainActivity.NotificationID, notificationBuilder.Build());
+            notificationManager.Notify(MainActivity.NOTIFICATION_ID, builder.Build());
         }
         #endregion
     }

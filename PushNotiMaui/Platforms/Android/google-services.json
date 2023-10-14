@@ -7,9 +7,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:757552680428:android:51915e4f4098e2db4f44c9",
+        "mobilesdk_app_id": "1:757552680428:android:0366031a4b17e1184f44c9",
         "android_client_info": {
           "package_name": "com.companyname.pushnotimaui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpFbbBHhOt7J_2f4tRrSEeXQUzvdNzRIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757552680428:android:b9c77d4b5d5fe4894f44c9",
+        "android_client_info": {
+          "package_name": "com.companyname.pushnotimaui_demo"
         }
       },
       "oauth_client": [],

@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Media;
 using Android.OS;
 
 namespace PushNotiMaui
@@ -9,8 +8,8 @@ namespace PushNotiMaui
     public class MainActivity : MauiAppCompatActivity
     {
         #region [ Fields ]
-        internal static readonly string Channel_ID = "TestChannel";
-        internal static readonly int NotificationID = 101;
+        public static readonly string CHANNEL_ID = "TestChannel";
+        public static readonly int NOTIFICATION_ID = 1;
         #endregion
 
         #region [ Methods - Override ]
@@ -18,19 +17,19 @@ namespace PushNotiMaui
         {
             base.OnCreate(savedInstanceState);
 
-            OnCreatingNotiService();
+            CreateNotificationChannel();
         }
         #endregion
 
-        #region [ Methods - Create Noti ]
-        private void OnCreatingNotiService()
+        #region [ Methods - Create ]
+        private void CreateNotificationChannel()
         {
-            if (OperatingSystem.IsOSPlatformVersionAtLeast("android", 26))
+            if(OperatingSystem.IsOSPlatformVersionAtLeast("android", 26))
             {
-                var channel = new NotificationChannel(Channel_ID, "Test Notfication Channel", NotificationImportance.Default);
+                var testChannel = new NotificationChannel(CHANNEL_ID, "Test Channel", NotificationImportance.Default);
 
-                var notificaitonManager = (NotificationManager)GetSystemService(Android.Content.Context.NotificationService);
-                notificaitonManager.CreateNotificationChannel(channel);
+                var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+                notificationManager.CreateNotificationChannel(testChannel);
             }
         }
         #endregion

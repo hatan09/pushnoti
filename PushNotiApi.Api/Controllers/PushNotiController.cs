@@ -10,8 +10,8 @@ namespace PushNotiApi.Api.Controllers
     [ApiController]
     public class PushNotiController : ControllerBase
     {
-        [HttpPost("firebase/{deviceToken}")]
-        public async Task<IActionResult> SendFirebaseNotiAsync([FromBody] string info, string deviceToken)
+        [HttpGet("firebase/{deviceToken}")]
+        public async Task<IActionResult> SendFirebaseNotiAsync(string deviceToken)
         {
             var message = new Message()
             {
@@ -21,7 +21,7 @@ namespace PushNotiApi.Api.Controllers
                     Body = $"Your number is: {Random.Shared.Next(0, 100)}",
                 },
                 Data = new Dictionary<string, string> {
-                    ["Infomation"] = string.IsNullOrEmpty(info) ? "No information." : info,
+                    ["Infomation"] = "No Info",
                 },
                 Token = deviceToken,
             };
